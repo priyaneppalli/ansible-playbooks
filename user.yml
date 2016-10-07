@@ -1,0 +1,15 @@
+---
+- hosts: appserver
+  user: root
+  sudo: yes
+  tasks:
+    - name: installing packages
+      yum: name={{item}} state=installed
+      with_items:
+      - wget
+      - curl
+      - telnet
+      - lynx
+      - httpd
+      register: result
+    - debug: var=result

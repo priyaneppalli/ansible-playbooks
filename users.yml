@@ -1,0 +1,13 @@
+---
+- hosts: appserver
+  user: root
+  sudo: yes
+  tasks:
+    - name: creating users
+      user: name={{item}} state=present
+      with_items:
+      - ram
+      - ajay
+      register: result
+    - debug: var=result
+
